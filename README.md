@@ -4,9 +4,9 @@
 ## Overview
 This repository contains code for a simple TCP client-server communication implemented in C. The codes are provided for both Windows and Linux environments. The client sends a message to the server, and the server responds.
 
-**Note:**  
-- `client1.c` & `server1.c` files: For **Windows** version  
-- `client.c` & `server.c` files: For **Linux** version  
+Note: 
+- `client1.c` & `server1.c` files: For Windows version  
+- `client.c` & `server.c` files: For Linux version  
 
 ## Windows Version
 
@@ -68,6 +68,22 @@ The Linux version of the code uses standard **POSIX** libraries for socket progr
    ```bash
    ./server
 
-4. **Run the Server:**
+4. **Run the Client:**
    ```bash
    ./client
+
+# Summary of Differences
+1. **Socket Initialization:**
+Windows: Requires WSAStartup() to initialize Winsock.
+Linux: No explicit initialization function needed.
+
+2. **Socket Closure:**
+Windows: Uses closesocket().
+Linux: Uses close().
+
+3. **Library Linking:**
+Windows: Requires linking with -lws2_32.
+Linux: No special library is needed; the standard C library is sufficient.
+
+# Conclusion
+This repository provides a simple example of TCP socket communication between a client and server, demonstrating the necessary platform-specific changes between Windows and Linux. These examples serve as a foundation for more complex socket programming tasks.

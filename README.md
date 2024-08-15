@@ -59,3 +59,19 @@ gcc client1.c -o client -lws2_32
 ./client
 
 Note: Ensure server is running before starting client to establish connection else connection wont be successfull.
+
+# Summary of Differences
+1. Socket Initialization:
+Windows: Requires WSAStartup() to initialize Winsock.
+Linux: No explicit initialization function needed.
+
+2. Socket Closure:
+Windows: Uses closesocket().
+Linux: Uses close().
+
+3. Library Linking:
+Windows: Requires linking with -lws2_32.
+Linux: No special library is needed; the standard C library is sufficient.
+
+# Conclusion
+This repository provides a simple example of TCP socket communication between a client and server, demonstrating the necessary platform-specific changes between Windows and Linux. These examples serve as a foundation for more complex socket programming tasks.
